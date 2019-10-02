@@ -1,4 +1,4 @@
-module.exports = checkIdenticalElements;
+pumodule.exports = checkIdenticalElements;
 
 function checkIdenticalElements(massive) {
     let isIdenty = 0;
