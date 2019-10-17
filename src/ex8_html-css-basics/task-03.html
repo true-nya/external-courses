@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .first {
+            border: 5px inset green;
+        }
+
+        .second {
+            border: 5px solid blueviolet;
+        }
+
+        .second:hover {
+            border: 5px dashed red;
+        }
+
+        .third {
+            border: 5px dashed red;
+            box-shadow:
+                0 0 0 5px green,
+                0 0 0 10px yellow;
+        }
+
+        .fourth {
+            border: 5px dotted blue;
+            border-radius: 15%;
+        }
+
+        .fifth {
+            border-style: solid;
+            border-image-width: 15px;
+            border-image-source: url("https://mdn.mozillademos.org/files/6017/border-image-6.svg");
+            border-image-slice: 30;
+            border-image-repeat: stretch;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first"></div>
+    <div class="second"></div>
+    <div class="third"></div>
+    <div class="fourth"></div>
+    <div class="fifth"></div>
+</body>
+
+</html>

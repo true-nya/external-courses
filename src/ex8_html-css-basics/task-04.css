@@ -1,0 +1,12 @@
+.paragraphs {
+    background-color: aquamarine;
+    font-family: 'Titillium Web', sans-serif;
+    font-style: italic;
+}
+
+.tables {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 24pt;
+    background-image: url("image_03.jpg");
+    width: 40vw;
+}
