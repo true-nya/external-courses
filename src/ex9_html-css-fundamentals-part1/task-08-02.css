@@ -4,6 +4,7 @@ body {
 
 .wrapper {
     display: flex;
+    flex-direction: row-reverse;
 }
 
 header {

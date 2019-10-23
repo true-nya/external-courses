@@ -1,0 +1,71 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+fieldset {
+    width: 500px;
+    border: none;
+}
+
+p {
+    color: red;
+}
+
+h3, p {
+    margin: 10px 0;
+}
+
+.rowForm {
+    display: flex;
+    width: 500px;
+    margin: 20px 0;
+    flex-direction: space-between;
+}
+
+.lbl {
+    width: 80px;
+}
+
+textarea, input {
+    border-radius: 5px;
+    width: 200px;
+}
+
+input[type="button"] {
+    width: 60px;
+    border-color: rgb(235, 235, 235);
+    background-color: rgb(209, 209, 209);
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid red;
+    align-self: center;
+}
+
+.container-hint {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.body-hint {
+    font-size: 8pt;
+    color: white;
+    width: 120px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    line-height: 20px;
+}
+
+input[type="text"]:valid {
+    background: rgb(199, 231, 191);
+}
+
+input[type="text"]:invalid {
+    background: #fdd;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <link rel="stylesheet" href="task.css">
+</head>
+
+<body>
+    <h3>Form Here</h3>
+    <p>*required fields</p>
+    <hr>
+    <form action="/login" method="post">
+        <fieldset>
+            <div class="rowForm">
+                <label class="lbl">Name:</label>
+                <input type="text" name="Username" placeholder="placeholder text" class="inputField" required>
+            </div>
+            <div class="rowForm">
+                <label class="lbl">Email:</label>
+                <input type="text" name="Email" placeholder="placeholder text" class="inputField" required>
+                <div class="container-hint">
+                    <div class="arrow-left"></div>
+                    <div class="body-hint">Form field hint</div>
+                </div>
+            </div>
+            <div class="rowForm">
+                <label class="lbl"> Website:</label>
+                <input type="text" name="Website" placeholder="placeholder text" class="inputField" required>
+                <div class="container-hint">
+                    <div class="arrow-left"></div>
+                    <div class="body-hint">Form field hint</div>
+                </div>
+            </div>
+            <div class="rowForm">
+                <label class="lbl"> Message:</label>
+                <textarea name="message" cols="30" rows="10" class="inputField"></textarea>
+            </div>
+            <input type="button" value="Submit" class="submitButton">
+        </fieldset>
+    </form>
+</body>
+
+</html>
