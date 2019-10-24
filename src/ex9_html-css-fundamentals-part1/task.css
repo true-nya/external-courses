@@ -37,7 +37,17 @@ input[type="button"] {
     background-color: rgb(209, 209, 209);
 }
 
-.arrow-left {
+#before[required]+label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#before[required]+label:before {
+    content: "";
+    position: absolute;
+    left: 1.2em;
+    top: 25%;
     width: 0;
     height: 0;
     border-top: 5px solid transparent;
@@ -46,13 +56,11 @@ input[type="button"] {
     align-self: center;
 }
 
-.container-hint {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.body-hint {
+#before[required]+label:after {
+    content: "Form field hint";
+    position: absolute;
+    left: 2.2em;
+    font-size: 23px;
     font-size: 8pt;
     color: white;
     width: 120px;
@@ -62,10 +70,68 @@ input[type="button"] {
     line-height: 20px;
 }
 
-input[type="text"]:valid {
-    background: rgb(199, 231, 191);
+#before[required]:valid+label:before, #before[required]:valid+label:before {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid rgb(3, 1, 102);
+    align-self: center;
 }
 
-input[type="text"]:invalid {
-    background: #fdd;
+#before[required]:valid+label:after, #before[required]:valid+label:after {
+    width: 120px;
+    height: 20px;
+    background-color: blue;
+    text-align: center;
+    line-height: 20px;
+}
+
+#after[required]+label:after {
+    content: "Form field hint";
+    position: absolute;
+    left: 2.2em;
+    font-size: 8pt;
+    color: white;
+    width: 120px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    line-height: 20px;
+}
+
+#after[required]+label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#after[required]+label:before {
+    content: "";
+    position: absolute;
+    left: 1.2em;
+    top: 25%;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid red;
+    align-self: center;
+}
+
+#after[required]:valid+label:before, #after[required]:valid+label:before {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid rgb(3, 1, 102);
+    align-self: center;
+}
+
+#after[required]:valid+label:after, #after[required]:valid+label:after {
+    width: 120px;
+    height: 20px;
+    background-color: blue;
+    text-align: center;
+    line-height: 20px;
 }
