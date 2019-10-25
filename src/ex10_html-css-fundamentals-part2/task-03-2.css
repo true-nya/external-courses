@@ -1,0 +1,23 @@
+tr td:nth-child(4)::before {
+    content: "\0024";
+}
+
+tr td:nth-child(4)::after {
+    content: ".00";
+}
+
+tr td:not(.notGmail):nth-child(3)::after {
+    content: "@gmail.com";
+}
+
+.code322::before {
+    content: "(322) ";
+}
+
+.code740::before {
+    content: "(740) ";
+}
+
+.code800::before {
+    content: "(800) ";
+}
