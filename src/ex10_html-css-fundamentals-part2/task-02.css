@@ -1,0 +1,21 @@
+.rowForm {
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto 10px 5px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+fieldset {
+    width: 80%;
+}
+
+form {
+    height: auto;
+}
+
+input[type="submit"] {
+    margin-right: 4px;
+}

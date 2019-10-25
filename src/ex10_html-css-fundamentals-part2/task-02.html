@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task-02</title>
+    <link rel="stylesheet" href="task-02.css">
+</head>
+
+<body>
+    <form action="http://httpbin.org/post" method="POST">
+        <fieldset>
+            <legend>Personal data</legend>
+            <div class="rowForm">
+                <label>Surname</label>
+                <input type="text" name="Surname">
+            </div>
+            <div class="rowForm">
+                <label>First name</label>
+                <input type="text" name="firstName">
+            </div>
+            <div class="rowForm">
+                <label>Middle name</label>
+                <input type="text" name="middleName">
+            </div>
+            <div class="rowForm">
+                <label>You are</label>
+                <input type="radio" value="male" name="male">male
+                <input type="radio" value="female" name="female">female
+            </div>
+            <div class="rowForm">
+                <label>Age</label>
+                <input type="number" max="101" min="18" step="1" name="age">
+            </div>
+            <div class="rowForm">
+                <label>Country of Residence</label>
+                <select name="country">
+                    <option value="Russia">Russia</option>
+                    <option value="Ukraine">Ukraine</option>
+                </select>
+            </div>
+            <div class="rowForm">
+                <label>City</label>
+                <input type="checkbox" value="Ryazan" name="Ryazan">Ryazan
+                <input type="checkbox" value="Moscow" name="Moscow">Moscow
+            </div>
+            <div class="rowForm">
+                <label>Photogrphy</label>
+                <input type="file" name="photo">
+            </div>
+            <hr>
+            <div class="rowForm">
+                <label>Title</label>
+                <select multiple size="8" name="profession">
+                    <optgroup label="Technologies">
+                        <option value="Web Master">Web Master</option>
+                        <option value="Database Administrator">Database Administrator</option>
+                        <option value="Computer-aided-design">Computer-aided-design</option>
+                    </optgroup>
+                    <optgroup label="Finance">
+                        <option value="Economic Planing">Economic Planing</option>
+                        <option value="Managment accounting">Managment accounting</option>
+                        <option value="Budgeting and planning">Budgeting and planning</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="rowForm">
+                <label>Salary</label>
+                <input type="range" name="salary">
+            </div>
+            <div class="rowForm">
+                <textarea cols="30" rows="10" placeholder="Tell us about yourself.." name="information"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Contact information</legend>
+            <div class="rowForm">
+                <label>Site</label>
+                <input type="text" name="site">
+            </div>
+            <div class="rowForm">
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="rowForm">
+                <label>Phone</label>
+                <input type="text" name="phone">
+            </div>
+        </fieldset>
+        <div class="rowForm">
+            <label>Password</label>
+            <input type="password" required name="password">
+        </div>
+        <div class="rowForm">
+            <input type="submit" value="Отправить" name="submit">
+            <input type="reset" value="Сбросить" name="reset">
+        </div>
+    </form>
+</body>
+
+</html>
