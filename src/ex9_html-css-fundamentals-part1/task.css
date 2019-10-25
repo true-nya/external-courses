@@ -31,7 +31,7 @@ textarea, input {
     width: 200px;
 }
 
-input[type="button"] {
+input[type="submit"] {
     width: 60px;
     border-color: rgb(235, 235, 235);
     background-color: rgb(209, 209, 209);
@@ -75,7 +75,7 @@ input[type="button"] {
     height: 0;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solid rgb(3, 1, 102);
+    border-right: 5px solid blue;
     align-self: center;
 }
 
@@ -124,7 +124,7 @@ input[type="button"] {
     height: 0;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solid rgb(3, 1, 102);
+    border-right: 5px solid blue;
     align-self: center;
 }
 
