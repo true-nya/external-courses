@@ -220,7 +220,7 @@ body {
         bottom: 125px;
         right: 420px;
     }
-    .image-container .slidebar img:not(.nav-back), .slidebar img:not(.nav-back+.arrow) {
+    .image-container .image-1, .image-container .slidebar .image-2 {
         height: 241px;
         width: 322px;
     }
