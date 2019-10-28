@@ -10,7 +10,7 @@ body {
     color: #6d6e71;
 }
 
-@media screen and (min-device-width: 1700px) and (min-device-height: 2000px) {
+@media screen {
     header {
         height: 217px;
         display: flex;
@@ -220,11 +220,7 @@ body {
         bottom: 125px;
         right: 420px;
     }
-    .image-container .slidebar img:not(.arrow) {
-        height: 241px;
-        width: 322px;
-    }
-    .image-container .slidebar img:not(.nav-back) {
+    .image-container .slidebar img:not(.nav-back), .slidebar img:not(.nav-back+.arrow) {
         height: 241px;
         width: 322px;
     }
@@ -354,6 +350,7 @@ body {
     }
     .slidebar {
         display: none;
+        opacity: 0;
     }
     .image-container {
         position: relative;
