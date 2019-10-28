@@ -207,7 +207,7 @@ body {
         position: absolute;
         top: -15px;
         left: 0;
-        font-weight: 1000;
+        font-weight: 900;
         font-size: 130px;
         color: #bbedff;
     }
@@ -220,7 +220,11 @@ body {
         bottom: 125px;
         right: 420px;
     }
-    .image-container .slidebar img:not(.nav-back, .arrow) {
+    .image-container .slidebar img:not(.arrow) {
+        height: 241px;
+        width: 322px;
+    }
+    .image-container .slidebar img:not(.nav-back) {
         height: 241px;
         width: 322px;
     }
@@ -236,7 +240,7 @@ body {
     }
     article {
         width: 385px;
-        word-wrap: wrap;
+        word-break: break-all;
     }
     section {
         display: flex;
@@ -388,7 +392,7 @@ body {
         position: absolute;
         top: -15px;
         left: 0;
-        font-weight: 1000;
+        font-weight: 900;
         font-size: 130px;
         color: #bbedff;
     }
@@ -397,7 +401,7 @@ body {
     }
     article {
         width: 785px;
-        word-wrap: wrap;
+        word-break: break-all;
     }
     section {
         display: flex;
