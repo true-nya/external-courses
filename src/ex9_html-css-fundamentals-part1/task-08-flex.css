@@ -13,6 +13,7 @@ header {
 
 section {
     background: lightgreen;
+    width: 75%;
 }
 
 article {
@@ -22,8 +23,8 @@ article {
 
 aside {
     background: pink;
-    flex: 300px;
     order: -1;
+    width: 25%;
 }
 
 header, article, section, .module {

@@ -20,8 +20,6 @@ article {
 
 aside {
     background: pink;
-    width: 100%;
-    background: pink;
     grid-area: 2 / 2 / 2 / 2;
 }
 
