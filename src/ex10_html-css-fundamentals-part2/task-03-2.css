@@ -10,14 +10,14 @@ tr td:not(.notGmail):nth-child(3)::after {
     content: "@gmail.com";
 }
 
-.code322::before {
+.codeMinnesota::before {
     content: "(322) ";
 }
 
-.code740::before {
+.codeOhio::before {
     content: "(740) ";
 }
 
-.code800::before {
+.codeAllCountry::before {
     content: "(800) ";
 }
