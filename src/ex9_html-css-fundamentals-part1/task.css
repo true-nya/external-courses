@@ -1,0 +1,137 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+fieldset {
+    width: 500px;
+    border: none;
+}
+
+p {
+    color: red;
+}
+
+h3, p {
+    margin: 10px 0;
+}
+
+.rowForm {
+    display: flex;
+    width: 500px;
+    margin: 20px 0;
+    flex-direction: space-between;
+}
+
+.lbl {
+    width: 80px;
+}
+
+textarea, input {
+    border-radius: 5px;
+    width: 200px;
+}
+
+input[type="submit"] {
+    width: 60px;
+    border-color: rgb(235, 235, 235);
+    background-color: rgb(209, 209, 209);
+}
+
+#before[required]+label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#before[required]+label:before {
+    content: "";
+    position: absolute;
+    left: 1.2em;
+    top: 25%;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid red;
+    align-self: center;
+}
+
+#before[required]+label:after {
+    content: "Form field hint";
+    position: absolute;
+    left: 2.2em;
+    font-size: 23px;
+    font-size: 8pt;
+    color: white;
+    width: 120px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    line-height: 20px;
+}
+
+#before[required]:valid+label:before, #before[required]:valid+label:before {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid blue;
+    align-self: center;
+}
+
+#before[required]:valid+label:after, #before[required]:valid+label:after {
+    width: 120px;
+    height: 20px;
+    background-color: blue;
+    text-align: center;
+    line-height: 20px;
+}
+
+#after[required]+label:after {
+    content: "Form field hint";
+    position: absolute;
+    left: 2.2em;
+    font-size: 8pt;
+    color: white;
+    width: 120px;
+    height: 20px;
+    background-color: red;
+    text-align: center;
+    line-height: 20px;
+}
+
+#after[required]+label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#after[required]+label:before {
+    content: "";
+    position: absolute;
+    left: 1.2em;
+    top: 25%;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid red;
+    align-self: center;
+}
+
+#after[required]:valid+label:before, #after[required]:valid+label:before {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid blue;
+    align-self: center;
+}
+
+#after[required]:valid+label:after, #after[required]:valid+label:after {
+    width: 120px;
+    height: 20px;
+    background-color: blue;
+    text-align: center;
+    line-height: 20px;
+}
