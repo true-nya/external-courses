@@ -41,7 +41,6 @@ main::-webkit-scrollbar-thumb {
     justify-content: space-between;
     width: 32px;
     margin-bottom: 3px;
-    vertical-align: middle;
 }
 
 .row-fragment .circle {
@@ -65,7 +64,6 @@ main::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    vertical-align: middle;
 }
 
 .app-logo span {
