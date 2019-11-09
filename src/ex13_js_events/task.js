@@ -1,4 +1,3 @@
-
 let userClick = document.querySelector(".user-menu");
 userClick.addEventListener('click', createSubMenu);
 function createSubMenu() {
@@ -19,7 +18,6 @@ function createSubMenu() {
     } else {
         closeMenu();
     }
-
 }
 function closeMenu() {
     let arrow = document.querySelector(".arrow");
@@ -45,13 +43,49 @@ localStorage.setItem("finished", JSON.stringify({
     issue: []
 }));
 
+function addTaskFromDropdown(currentButtonClass, selectName, previos, current, bodyPrevios) {
+    let currentButton = document.querySelector(currentButtonClass);
+    let currentDropdown = document.querySelector(selectName);
+    let index = currentDropdown.options.selectedIndex - 1;
+    let previousObject = JSON.parse(localStorage.getItem(previos));
+    let currentObject = JSON.parse(localStorage.getItem(current));
+    let bufferTask = Object.assign({}, previousObject.issue[index]);
+    bufferTask.id = 'task' + currentObject.issue.length;
+    previousObject.issue.splice(index, 1);
+    localStorage.setItem(previos, JSON.stringify(previousObject));
+    currentObject.issue.push(bufferTask);
+    localStorage.setItem(current, JSON.stringify(currentObject));
+    let task = document.createElement('div');
+    task.className = "task-item";
+    task.innerHTML = bufferTask.name;
+    currentButton.before(task);
+    currentDropdown.remove();
+    deleteItem(bodyPrevios, index);
+}
+function createDropDown(localStorageProperty, className, buttonName, tabIndex, handler) {
+    initialization()
+    if (JSON.parse(localStorage.getItem(localStorageProperty)).issue.length > 0) {
+        let ready = document.querySelector(buttonName);
+        let currentDropdown = document.createElement("select");
+        currentDropdown.className = className;
+        currentDropdown.setAttribute("tabindex", tabIndex);
+        ready.before(currentDropdown);
+        let currentObject = JSON.parse(localStorage.getItem(localStorageProperty));
+        currentDropdown.append(new Option("choose task:"))
+        for (i = 0; i < currentObject.issue.length; i++) {
+            currentDropdown.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
+        };
+        document.querySelector("." + className).addEventListener("change", handler)
+    }
+}
 document.querySelector(".backlog-button").addEventListener("click", addItemInBacklog);
 function addItemInBacklog() {
     let currentTask = document.createElement("input");
     let backlog = document.querySelector(".backlog-button");
     currentTask.type = "text";
     currentTask.className = "current-backlog-task";
-    currentTask.focus();
+    currentTask.setAttribute("required", "required");
+    currentTask.setAttribute("tabindex", "2");
     backlog.before(currentTask);
     currentTask.onchange = () => {
         if (currentTask.value !== "") {
@@ -63,105 +97,54 @@ function addItemInBacklog() {
             task.innerHTML = currentTask.value;
             backlog.before(task);
             currentTask.remove();
+            initialization()
         }
     }
 };
 document.querySelector(".ready-button").addEventListener("click", addItemInReady);
 function addItemInReady() {
-    if (JSON.parse(localStorage.getItem("backlog")).issue.length > 0) {
-        let currentTask = document.createElement("select");
-        let ready = document.querySelector(".ready-button");
-        console.log(ready);
-        currentTask.className = "current-ready-task";
-        ready.before(currentTask);
-
-        let currentObject = JSON.parse(localStorage.getItem("backlog"));
-        currentTask.append(new Option("choose task:"))
-        for (i = 0; i < currentObject.issue.length; i++) {
-            currentTask.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
-        };
-        document.querySelector(".current-ready-task").addEventListener("change", changeReady)
-    };
-};
-
-function changeReady() {
-    addTaskFromDropdown(".ready-button", ".current-ready-task", "backlog", "ready", ".body-backlog")
+    createDropDown("backlog", "current-ready-task", ".ready-button", "4", changeReady);
 }
-
-function addTaskFromDropdown(currentBody, selectName, previos, current, bodyPrevios) {
-    let ready = document.querySelector(currentBody);
-    let currentTask = document.querySelector(selectName);
-    let index = currentTask.options.selectedIndex - 1;
-    let backlogObject = JSON.parse(localStorage.getItem(previos));
-    let readyObject = JSON.parse(localStorage.getItem(current));
-    let currentObj = Object.assign({}, backlogObject.issue[index]);
-    currentObj.id = 'task' + readyObject.issue.length;
-    backlogObject.issue.splice(index, 1);
-    localStorage.setItem(previos, JSON.stringify(backlogObject));
-    readyObject.issue.push(currentObj);
-    localStorage.setItem(current, JSON.stringify(readyObject));
-    let task = document.createElement('div');
-    task.className = "task-item";
-    task.innerHTML = currentObj.name;
-    ready.before(task);
-    currentTask.remove();
-    deleteItem(bodyPrevios, index);
+function changeReady() {
+    addTaskFromDropdown(".ready-button", ".current-ready-task", "backlog", "ready", ".body-backlog");
+    initialization();
 }
 document.querySelector(".progress-button").addEventListener("click", addItemInProgress);
 function addItemInProgress() {
-    if (JSON.parse(localStorage.getItem("ready")).issue.length > 0) {
-        let currentTask = document.createElement("select");
-        let ready = document.querySelector(".progress-button");
-        currentTask.className = "current-progress-task";
-        ready.before(currentTask);
-
-        let currentObject = JSON.parse(localStorage.getItem("ready"));
-        currentTask.append(new Option("choose task:"))
-        for (i = 0; i < currentObject.issue.length; i++) {
-            currentTask.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
-        };
-        document.querySelector(".current-progress-task").addEventListener("change", changeProgress)
-    };
+    createDropDown("ready", "current-progress-task", ".progress-button", "6", changeProgress);
 };
 function changeProgress() {
-    addTaskFromDropdown(".progress-button", ".current-progress-task", "ready", "progress", ".body-ready")
+    addTaskFromDropdown(".progress-button", ".current-progress-task", "ready", "progress", ".body-ready");
+    initialization();
 }
-
-
 document.querySelector(".finished-button").addEventListener("click", addItemInFinished);
 function addItemInFinished() {
-    if (JSON.parse(localStorage.getItem("progress")).issue.length > 0) {
-        let currentTask = document.createElement("select");
-        let ready = document.querySelector(".finished-button");
-        currentTask.className = "current-finished-task";
-        ready.before(currentTask);
-
-        let currentObject = JSON.parse(localStorage.getItem("progress"));
-        currentTask.append(new Option("choose task:"))
-        for (i = 0; i < currentObject.issue.length; i++) {
-            currentTask.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
-        };
-        document.querySelector(".current-finished-task").addEventListener("change", changeFinished)
-    };
-};
-function changeFinished() {
-    addTaskFromDropdown(".finished-button", ".current-finished-task", "progress", "finished", ".body-progress")
+    createDropDown("progress", "current-finished-task", ".finished-button", "8", changeFinished);
 }
-// window.addEventListener("load", initialization)
-// function initialization() {
-//     let backlog = document.querySelector(".backlog-button");
-//     if (JSON.parse(localStorage.getItem("backlog")).issue.length > 0) {
-//         let currentObject = JSON.parse(localStorage.getItem("backlog"));
-//         for (i = 0; i < currentObject.issue.length; i++) {
-//             let task = document.createElement('div');
-//             task.className = "task-item";
-//             task.innerHTML = currentObject.issue[i];
-//             backlog.before(task);
-//         }
-//     }
-// }
-
+function changeFinished() {
+    addTaskFromDropdown(".finished-button", ".current-finished-task", "progress", "finished", ".body-progress");
+    initialization();
+}
+window.addEventListener("load", initialization)
+function initialization() {
+    if (JSON.parse(localStorage.getItem("backlog")).issue.length == 0) {
+        document.querySelector(".ready-button").setAttribute("disabled", "disabled");
+    } else {
+        document.querySelector(".ready-button").removeAttribute("disabled");
+    };
+    if (JSON.parse(localStorage.getItem("ready")).issue.length == 0) {
+        document.querySelector(".progress-button").setAttribute("disabled", "disabled");
+    }
+    else {
+        document.querySelector(".progress-button").removeAttribute("disabled");
+    }
+    if (JSON.parse(localStorage.getItem("progress")).issue.length == 0) {
+        document.querySelector(".finished-button").setAttribute("disabled", "disabled");
+    } else {
+        document.querySelector(".finished-button").removeAttribute("disabled");
+    }
+}
 function deleteItem(className, index) {
-    let backlog = document.querySelector(className);
-    backlog.removeChild(document.querySelectorAll(".task-item")[index]);
+    let element = document.querySelector(className);
+    element.removeChild(document.querySelectorAll(".task-item")[index]);
 }

@@ -5,6 +5,7 @@ body {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
+    min-width: 500px;
 }
 
 header, footer {
@@ -15,7 +16,7 @@ header, footer {
 
 main {
     background: #0079BF;
-    min-width: 1152px;
+    min-width: 500px;
     min-height: 500px;
     overflow-x: scroll;
 }
@@ -223,6 +224,12 @@ main {
     cursor: pointer;
 }
 
+.task-block button:disabled, .task-block button:disabled:hover {
+    color: rgb(58, 67, 82);
+    cursor: default;
+    font-weight: 500;
+}
+
 .task-block button:hover {
     color: rgb(157, 181, 223);
     border-radius: 5px;
@@ -256,6 +263,10 @@ main {
     background: #FFFFFF;
     border-radius: 5px;
     padding: 7px;
+}
+
+input:invalid {
+    background: rgb(255, 222, 209);
 }
 
 select {
