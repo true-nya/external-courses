@@ -193,3 +193,98 @@ a:link, a:active, a:visited {
     text-decoration: none;
     color: black;
 }
+
+main {
+    display: flex;
+    flex-direction: space-between;
+}
+
+.task-block {
+    margin: 20px;
+    width: 300px;
+    min-width: 80px;
+    height: min-content;
+    max-height: 450px;
+    background: #EBECF0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-block button {
+    padding: 2px 0px;
+    border: 1px solid transparent;
+    width: auto;
+    background: transparent;
+    font-size: 18px;
+    color: #5E6C84;
+    display: flex;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.task-block button:hover {
+    color: rgb(157, 181, 223);
+    border-radius: 5px;
+}
+
+.task-block img {
+    padding-right: 4px;
+    padding-top: 2px;
+}
+
+.task-block .header {
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    justify-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-item, input, select {
+    width: auto;
+    white-space: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    margin: 0 12px 15px 12px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+input {
+    width: 246px;
+}
+
+.body-backlog, .body-ready, .body-progress, .body-finished {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+    height: 52px;
+    width: 12px;
+    border-radius: 5px;
+    background-color: #CBCBCB;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(139, 136, 136);
+}
