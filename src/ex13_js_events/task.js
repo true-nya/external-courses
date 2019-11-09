@@ -87,20 +87,23 @@ function addItemInBacklog() {
     currentTask.setAttribute("required", "required");
     currentTask.setAttribute("tabindex", "2");
     backlog.before(currentTask);
-    currentTask.onchange = () => {
-        if (currentTask.value !== "") {
-            let currentObject = JSON.parse(localStorage.getItem("backlog"));
-            let task = document.createElement('div');
-            currentObject.issue.push({ id: "task" + currentObject.issue.length, name: currentTask.value });
-            localStorage.setItem("backlog", JSON.stringify(currentObject));
-            task.className = "task-item";
-            task.innerHTML = currentTask.value;
-            backlog.before(task);
-            currentTask.remove();
-            initialization()
-        }
-    }
+    document.querySelector(".current-backlog-task").addEventListener("change", addTaskInStorage);
 };
+function addTaskInStorage() {
+    let input = document.querySelector(".current-backlog-task");
+    let backlog = document.querySelector(".backlog-button");
+    let currentObject = JSON.parse(localStorage.getItem("backlog"));
+    if (input.value !== "") {
+        let task = document.createElement('div');
+        currentObject.issue.push({ id: "task" + currentObject.issue.length, name: input.value });
+        localStorage.setItem("backlog", JSON.stringify(currentObject));
+        task.className = "task-item";
+        task.innerHTML = input.value;
+        backlog.before(task);
+        input.remove();
+        initialization()
+    }
+}
 document.querySelector(".ready-button").addEventListener("click", addItemInReady);
 function addItemInReady() {
     createDropDown("backlog", "current-ready-task", ".ready-button", "4", changeReady);
@@ -127,21 +130,21 @@ function changeFinished() {
 }
 window.addEventListener("load", initialization)
 function initialization() {
-    if (JSON.parse(localStorage.getItem("backlog")).issue.length == 0) {
+    if (JSON.parse(localStorage.getItem("backlog")).issue.length === 0) {
         document.querySelector(".ready-button").setAttribute("disabled", "disabled");
     } else {
         document.querySelector(".ready-button").removeAttribute("disabled");
     };
-    if (JSON.parse(localStorage.getItem("ready")).issue.length == 0) {
+    if (JSON.parse(localStorage.getItem("ready")).issue.length === 0) {
         document.querySelector(".progress-button").setAttribute("disabled", "disabled");
     }
     else {
         document.querySelector(".progress-button").removeAttribute("disabled");
     }
-    if (JSON.parse(localStorage.getItem("progress")).issue.length == 0) {
+    if (JSON.parse(localStorage.getItem("progress")).issue.length === 0) {
         document.querySelector(".finished-button").setAttribute("disabled", "disabled");
     } else {
-        document.querySelector(".finished-button").removeAttribute("disabled");
+        document.querySelector(".finished-buton").removeAttribute("disabled");
     }
 }
 function deleteItem(className, index) {

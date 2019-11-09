@@ -197,7 +197,7 @@ a:link, a:active, a:visited {
 
 main {
     display: flex;
-    flex-direction: space-between;
+    justify-content: space-between;
 }
 
 .task-block {
