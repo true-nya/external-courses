@@ -258,8 +258,8 @@ main {
     padding: 7px;
 }
 
-input {
-    width: 246px;
+select {
+    cursor: pointer;
 }
 
 .body-backlog, .body-ready, .body-progress, .body-finished {
