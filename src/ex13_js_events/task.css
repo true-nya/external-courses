@@ -265,10 +265,6 @@ main {
     padding: 7px;
 }
 
-input:invalid {
-    background: rgb(255, 222, 209);
-}
-
 select {
     cursor: pointer;
 }

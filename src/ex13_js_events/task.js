@@ -84,7 +84,6 @@ function addItemInBacklog() {
     let backlog = document.querySelector(".backlog-button");
     currentTask.type = "text";
     currentTask.className = "current-backlog-task";
-    currentTask.setAttribute("required", "required");
     currentTask.setAttribute("tabindex", "2");
     backlog.before(currentTask);
     document.querySelector(".current-backlog-task").addEventListener("change", addTaskInStorage);
@@ -104,26 +103,25 @@ function addTaskInStorage() {
         initialization()
     }
 }
-document.querySelector(".ready-button").addEventListener("click", addItemInReady);
-function addItemInReady() {
+
+
+document.querySelector(".ready-button").addEventListener("click", () => {
     createDropDown("backlog", "current-ready-task", ".ready-button", "4", changeReady);
-}
+});
 function changeReady() {
     addTaskFromDropdown(".ready-button", ".current-ready-task", "backlog", "ready", ".body-backlog");
     initialization();
 }
-document.querySelector(".progress-button").addEventListener("click", addItemInProgress);
-function addItemInProgress() {
+document.querySelector(".progress-button").addEventListener("click", () => {
     createDropDown("ready", "current-progress-task", ".progress-button", "6", changeProgress);
-};
+});
 function changeProgress() {
     addTaskFromDropdown(".progress-button", ".current-progress-task", "ready", "progress", ".body-ready");
     initialization();
 }
-document.querySelector(".finished-button").addEventListener("click", addItemInFinished);
-function addItemInFinished() {
+document.querySelector(".finished-button").addEventListener("click", () => {
     createDropDown("progress", "current-finished-task", ".finished-button", "8", changeFinished);
-}
+});
 function changeFinished() {
     addTaskFromDropdown(".finished-button", ".current-finished-task", "progress", "finished", ".body-progress");
     initialization();
@@ -144,7 +142,7 @@ function initialization() {
     if (JSON.parse(localStorage.getItem("progress")).issue.length === 0) {
         document.querySelector(".finished-button").setAttribute("disabled", "disabled");
     } else {
-        document.querySelector(".finished-buton").removeAttribute("disabled");
+        document.querySelector(".finished-button").removeAttribute("disabled");
     }
 }
 function deleteItem(className, index) {
