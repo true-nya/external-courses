@@ -256,6 +256,7 @@ main {
 .task-item, input, select {
     width: auto;
     white-space: normal;
+    word-wrap: break-word;
     font-size: 18px;
     line-height: 21px;
     color: #000000;
