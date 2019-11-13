@@ -10,7 +10,7 @@ body {
     color: #6d6e71;
 }
 
-@media screen {
+@media screen and (min-device-width: 1345px) and (min-device-height: 1280px) {
     header {
         height: 217px;
         display: flex;
@@ -66,8 +66,7 @@ body {
         position: absolute;
         z-index: 1;
         bottom: 125%;
-        left: 50%;
-        margin-left: -120px;
+        left: -107px;
         opacity: 0;
         transition: opacity 0.3s;
     }
@@ -128,15 +127,15 @@ body {
     li:not(:first-child) {
         border-left: 1px solid #eceef4;
     }
-    .main-menu a+span {
+    .focused-menu-item {
         position: relative;
         display: inline-block;
     }
-    .main-menu a+span::after {
+    .focused-menu-item::after {
         visibility: hidden;
         content: "";
         position: absolute;
-        left: 39%;
+        left: 35%;
         bottom: 0;
         width: 0;
         height: 0;
@@ -144,7 +143,7 @@ body {
         border-right: 17px solid transparent;
         border-bottom: 8px solid #1faae2;
     }
-    .main-menu a:hover+span:after, .main-menu li:focus a+span:after {
+    a:hover+.focused-menu-item::after, .main-menu li:focus .focused-menu-item:after {
         visibility: visible;
     }
     .main-menu li a:hover, .main-menu li:focus a {
@@ -166,10 +165,10 @@ body {
     }
     #searchForm #search {
         height: 25px;
-        width: 163px;
+        width: 167px;
         border: none;
     }
-    #searchForm #search::placeholder {
+    #search::placeholder {
         color: #6d6e71;
         font-size: 15px;
     }
@@ -190,8 +189,9 @@ body {
     }
     .back-lettering {
         position: absolute;
+        display: inline-block;
         top: 265px;
-        left: 623px;
+        left: 620px;
         z-index: 1;
         text-shadow: 1px 1px 2px rgba(1, 1, 1, 0.15);
         color: #ffffff;
@@ -199,14 +199,13 @@ body {
         font-size: 45px;
         font-weight: 200;
         padding-left: 95px;
-        line-height: 80.58px;
+        line-height: 80px;
         padding-top: 21px;
     }
-    .back-lettering::before {
-        content: "& ";
+    .ampersand {
         position: absolute;
-        top: -15px;
-        left: 0;
+        top: 120px;
+        left: 617px;
         font-weight: 900;
         font-size: 130px;
         color: #bbedff;
@@ -280,6 +279,7 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
+        min-width: max-content;
     }
     .logo {
         position: relative;
@@ -354,7 +354,7 @@ body {
     }
     .image-container {
         position: relative;
-        background-image: url("./img/background-tablet.png");
+        background: url("./img/background-tablet.png") no-repeat;
         height: 736px;
         width: 100%;
     }

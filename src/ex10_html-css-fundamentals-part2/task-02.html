@@ -12,52 +12,52 @@
         <fieldset>
             <legend>Personal data</legend>
             <div class="rowForm">
-                <label>Surname</label>
+                <span>Surname</span>
                 <input type="text" name="Surname">
             </div>
             <div class="rowForm">
-                <label>First name</label>
+                <span>First name</span>
                 <input type="text" name="firstName">
             </div>
             <div class="rowForm">
-                <label>Middle name</label>
+                <span>Middle name</span>
                 <input type="text" name="middleName">
             </div>
             <div class="rowForm">
-                <label>You are</label>
-                <input type="radio" value="male" name="male">male
-                <input type="radio" value="female" name="female">female
+                <span>You are</span>
+                <input type="radio" value="male" name="gender">male
+                <input type="radio" value="female" name="gender" checked>female
             </div>
             <div class="rowForm">
-                <label>Age</label>
+                <span>Age</span>
                 <input type="number" max="101" min="18" step="1" name="age">
             </div>
             <div class="rowForm">
-                <label>Country of Residence</label>
+                <span>Country of Residence</span>
                 <select name="country">
                     <option value="Russia">Russia</option>
                     <option value="Ukraine">Ukraine</option>
                 </select>
             </div>
             <div class="rowForm">
-                <label>City</label>
-                <input type="checkbox" value="Ryazan" name="Ryazan">Ryazan
-                <input type="checkbox" value="Moscow" name="Moscow">Moscow
+                <span>City</span>
+                <input type="checkbox" value="Ryazan" name="city" checked>Ryazan
+                <input type="checkbox" value="Moscow" name="city">Moscow
             </div>
             <div class="rowForm">
-                <label>Photogrphy</label>
+                <span>Photogrphy</span>
                 <input type="file" name="photo">
             </div>
             <hr>
             <div class="rowForm">
-                <label>Title</label>
+                <span>Title</span>
                 <select multiple size="8" name="profession">
-                    <optgroup label="Technologies">
+                    <optgroup span="Technologies">
                         <option value="Web Master">Web Master</option>
                         <option value="Database Administrator">Database Administrator</option>
                         <option value="Computer-aided-design">Computer-aided-design</option>
                     </optgroup>
-                    <optgroup label="Finance">
+                    <optgroup span="Finance">
                         <option value="Economic Planing">Economic Planing</option>
                         <option value="Managment accounting">Managment accounting</option>
                         <option value="Budgeting and planning">Budgeting and planning</option>
@@ -65,7 +65,7 @@
                 </select>
             </div>
             <div class="rowForm">
-                <label>Salary</label>
+                <span>Salary</span>
                 <input type="range" name="salary">
             </div>
             <div class="rowForm">
@@ -75,20 +75,20 @@
         <fieldset>
             <legend>Contact information</legend>
             <div class="rowForm">
-                <label>Site</label>
+                <span>Site</span>
                 <input type="text" name="site">
             </div>
             <div class="rowForm">
-                <label>Email</label>
+                <span>Email</span>
                 <input type="email" name="email">
             </div>
             <div class="rowForm">
-                <label>Phone</label>
+                <span>Phone</span>
                 <input type="text" name="phone">
             </div>
         </fieldset>
         <div class="rowForm">
-            <label>Password</label>
+            <span>Password</span>
             <input type="password" required name="password">
         </div>
         <div class="rowForm">
