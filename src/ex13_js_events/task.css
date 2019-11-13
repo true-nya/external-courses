@@ -202,8 +202,7 @@ main {
 
 .task-block {
     margin: 20px;
-    width: 300px;
-    min-width: 80px;
+    width: 286px;
     height: min-content;
     max-height: 450px;
     background: #EBECF0;
