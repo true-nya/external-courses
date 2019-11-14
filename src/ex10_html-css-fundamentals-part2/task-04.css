@@ -153,15 +153,19 @@ body {
         display: flex;
         align-self: center;
     }
-    #searchForm button {
+    #submit {
         border: solid 1px transparent;
         outline: none;
         background: transparent;
         padding: 0px;
         margin-right: 13px;
     }
-    #searchForm button:focus {
+    #submit:focus {
         border: solid 1px #1faae2;
+    }
+    #submit label {
+        font-size: 20px;
+        vertical-align: middle;
     }
     #searchForm #search {
         height: 25px;

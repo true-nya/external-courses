@@ -27,9 +27,6 @@
     </header>
     <nav>
         <div class="menu-tablet">
-            <div></div>
-            <div></div>
-            <div></div>
         </div>
         <ul class="main-menu">
             <li tabindex="1">
@@ -58,8 +55,11 @@
             </li>
         </ul>
         <form id="searchForm">
-            <button tabindex="8" type="submit"><img src="./img/search-icon.png" alt="seatch-icon"
-                    class="submit"></button>
+            <button tabindex="8" type="submit" id="submit">
+                <!-- <img src="./img/search-icon.png" alt="search-icon"
+                    class="submit"> -->
+                <label for="submit" class="submit">&#128269;</label>
+            </button>
             <input tabindex="7" type="search" id="search" placeholder="Type your search word" />
         </form>
     </nav>
