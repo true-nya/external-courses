@@ -153,28 +153,22 @@ body {
         display: flex;
         align-self: center;
     }
-    #submit {
-        border: solid 1px transparent;
-        outline: none;
-        background: transparent;
-        padding: 0px;
-        margin-right: 13px;
-    }
-    #submit:focus {
+    #searchForm label:focus {
         border: solid 1px #1faae2;
     }
-    #submit label {
+    #searchForm label {
         font-size: 20px;
-        vertical-align: middle;
+        margin-right: 5px;
     }
     #searchForm #search {
         height: 25px;
-        width: 167px;
+        width: 170px;
         border: none;
+        padding-right: 2px;
     }
     #search::placeholder {
         color: #6d6e71;
-        font-size: 15px;
+        font-size: 12px;
     }
     .image-container {
         position: relative;
