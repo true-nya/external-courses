@@ -1,30 +1,29 @@
-let picture = ["./asset/slide-1.jpg",
+let pictures = ["./asset/slide-1.jpg",
     "./asset/slide-2.jpg",
     "./asset/slide-3.jpg",
     "./asset/slide-4.jpg",
     "./asset/slide-5.jpg"];
 
-let slider = document.getElementById("slider");
-for (let i = 0; i < picture.length; i++) {
+let content = document.getElementById("slider");
+for (let i = 0; i < pictures.length; i++) {
     let div = document.createElement("div");
     div.className = "slide";
-    slider.append(div)
-    let img = document.createElement("img")
+    content.append(div)
+    let imageItem = document.createElement("img")
     let numPicture = document.createElement("span");
     numPicture.innerHTML = String(i);
     numPicture.style.visibility = "hidden";
-    img.src = picture[i];
-    div.append(img);
+    imageItem.src = pictures[i];
+    div.append(imageItem);
     div.append(numPicture);
 }
-
 
 let slides = document.getElementsByClassName("slide");
 let activeNode = 0;
 slides[0].lastElementChild.id = "activeSlide"
 
 showSlides(0);
-function nextSlide() {
+function goNext() {
     if (activeNode === slides.length - 1) {
         activeNode = 0;
         slides[activeNode].lastElementChild.id = "activeSlide";
@@ -38,7 +37,7 @@ function nextSlide() {
     console.log("kekex" + activeNode)
     showSlides(activeNode);
 }
-function backSlide() {
+function goBack() {
     if (activeNode === 0) {
         console.log("loh")
         activeNode = slides.length - 1;
@@ -56,29 +55,24 @@ function backSlide() {
     console.log("kekex" + activeNode)
     showSlides(activeNode);
 }
-function showSlides(activity) {
+function showSlides(activeSlide) {
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    slides[activity].style.display = "block";
-    console.log("act " + activity)
+    slides[activeSlide].style.display = "block";
 }
 
 let nextButton = document.getElementById("next");
-nextButton.addEventListener("click", nextSlide);
+nextButton.addEventListener("click", goNext);
 let backButton = document.getElementById("back");
-backButton.addEventListener("click", backSlide);
-
+backButton.addEventListener("click", goBack);
 document.addEventListener("keydown", checkKey)
-/* eslint-disable no-param-reassign */
-function checkKey(key) {
-
-    key = key || window.event;
-    if (key.keyCode === '37') {
-        backSlide();
+function checkKey() {
+    let code = code || window.event;
+    if (code.keyCode === '37') {
+        goBack();
     }
-    else if (key.keyCode === '39') {
-        nextSlide();
+    else if (code.keyCode === '39') {
+        goNext();
     }
-
 }
