@@ -113,9 +113,7 @@ function addTaskInStorage() {
 
 
 document.querySelector(".ready-button").addEventListener("click", () => {
-    console.log("do  " + isButtonClicked);
     createDropDown("backlog", "current-ready-task", ".ready-button", "4", changeReady);
-    console.log("posle  " + isButtonClicked);
 });
 function changeReady() {
     addTaskFromDropdown(".ready-button", ".current-ready-task", "backlog", "ready", ".body-backlog");
