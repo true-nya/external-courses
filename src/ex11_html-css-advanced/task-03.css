@@ -1,23 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic');
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
     margin: 0;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: normal;
+    flex: auto;
+    width: 100%;
+    height: 100%;
 }
 
 header, footer {
     height: 55px;
     width: 100%;
     background: #0067A3;
+    flex-grow: 0;
 }
 
 main {
     background: #0079BF;
     min-width: 1152px;
     min-height: 500px;
+    height: 100%;
     overflow-x: scroll;
+    flex-grow: 1;
 }
 
 main::-webkit-scrollbar-track {
@@ -110,6 +122,7 @@ main::-webkit-scrollbar-thumb {
     justify-content: space-around;
     align-items: center;
     margin-right: 50px;
+    border: 1px solid transparent;
 }
 
 .create-list span {
@@ -153,4 +166,8 @@ footer .info {
     display: flex;
     align-items: center;
     margin-left: 25px;
+}
+
+.finished-task {
+    margin-left: 36px;
 }

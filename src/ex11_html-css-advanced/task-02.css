@@ -1,6 +1,6 @@
 .field {
     position: relative;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, sans-serif;
     font-weight: normal;
     display: inline-block;
     padding-top: 5px;
@@ -21,7 +21,7 @@
     border-right: 1px solid #999;
 }
 
-label {
+span {
     opacity: 1;
     position: absolute;
     left: 2px;
@@ -40,7 +40,7 @@ input:focus {
     outline: none;
 }
 
-input:focus+label {
+input:focus+span, input:valid+span {
     font-size: 9px;
     top: 6px;
     color: rgb(78, 162, 211);
