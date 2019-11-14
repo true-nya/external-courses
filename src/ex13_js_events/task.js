@@ -1,17 +1,17 @@
-let userClick = document.querySelector(".user-menu");
+const userClick = document.querySelector(".user-menu");
 userClick.addEventListener('click', createSubMenu);
 function createSubMenu() {
     console.log(!document.querySelector(".user-submenu"));
     if (!document.querySelector(".user-submenu")) {
-        let arrow = document.querySelector(".arrow");
-        let ul = document.createElement("ul");
+        const arrow = document.querySelector(".arrow");
+        const ul = document.createElement("ul");
         arrow.className += " reflected-arrow";
         ul.className = "user-submenu";
         userClick.append(ul);
         for (i = 0; i < 3; i++) {
             ul.append(document.createElement('li'))
         }
-        let subItems = ul.children;
+        const subItems = ul.children;
         subItems[0].innerHTML = "<a href = '#'>My account</a>";
         subItems[1].innerHTML = "<a href = '#'>My task</a>";
         subItems[2].innerHTML = "<a href = '#'>Log out</a>";
@@ -20,9 +20,9 @@ function createSubMenu() {
     }
 }
 function closeMenu() {
-    let arrow = document.querySelector(".arrow");
+    const arrow = document.querySelector(".arrow");
     arrow.className = "arrow";
-    let ul = document.querySelector(".user-submenu");
+    const ul = document.querySelector(".user-submenu");
     ul.parentNode.removeChild(ul);
 }
 
@@ -42,20 +42,20 @@ localStorage.setItem("finished", JSON.stringify({
     title: "finished",
     issue: []
 }));
-
+let isButtonClicked = false;
 function addTaskFromDropdown(currentButtonClass, selectName, previos, current, bodyPrevios) {
-    let currentButton = document.querySelector(currentButtonClass);
-    let currentDropdown = document.querySelector(selectName);
-    let index = currentDropdown.options.selectedIndex - 1;
-    let previousObject = JSON.parse(localStorage.getItem(previos));
-    let currentObject = JSON.parse(localStorage.getItem(current));
-    let bufferTask = Object.assign({}, previousObject.issue[index]);
+    const currentButton = document.querySelector(currentButtonClass);
+    const currentDropdown = document.querySelector(selectName);
+    const index = currentDropdown.options.selectedIndex - 1;
+    const previousObject = JSON.parse(localStorage.getItem(previos));
+    const currentObject = JSON.parse(localStorage.getItem(current));
+    const bufferTask = Object.assign({}, previousObject.issue[index]);
     bufferTask.id = 'task' + currentObject.issue.length;
     previousObject.issue.splice(index, 1);
     localStorage.setItem(previos, JSON.stringify(previousObject));
     currentObject.issue.push(bufferTask);
     localStorage.setItem(current, JSON.stringify(currentObject));
-    let task = document.createElement('div');
+    const task = document.createElement('div');
     task.className = "task-item";
     task.innerHTML = bufferTask.name;
     currentButton.before(task);
@@ -64,36 +64,42 @@ function addTaskFromDropdown(currentButtonClass, selectName, previos, current, b
 }
 function createDropDown(localStorageProperty, className, buttonName, tabIndex, handler) {
     initialization()
-    if (JSON.parse(localStorage.getItem(localStorageProperty)).issue.length > 0) {
-        let ready = document.querySelector(buttonName);
-        let currentDropdown = document.createElement("select");
-        currentDropdown.className = className;
-        currentDropdown.setAttribute("tabindex", tabIndex);
-        ready.before(currentDropdown);
-        let currentObject = JSON.parse(localStorage.getItem(localStorageProperty));
-        currentDropdown.append(new Option("choose task:"))
-        for (i = 0; i < currentObject.issue.length; i++) {
-            currentDropdown.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
-        };
-        document.querySelector("." + className).addEventListener("change", handler)
+    if (!isButtonClicked === true) {
+        if (JSON.parse(localStorage.getItem(localStorageProperty)).issue.length > 0) {
+            const ready = document.querySelector(buttonName);
+            const currentDropdown = document.createElement("select");
+            currentDropdown.className = className;
+            currentDropdown.setAttribute("tabindex", tabIndex);
+            ready.before(currentDropdown);
+            const currentObject = JSON.parse(localStorage.getItem(localStorageProperty));
+            currentDropdown.append(new Option("choose task:"))
+            for (i = 0; i < currentObject.issue.length; i++) {
+                currentDropdown.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
+            };
+            document.querySelector("." + className).addEventListener("change", handler)
+        }
+        isButtonClicked = true;
     }
 }
 document.querySelector(".backlog-button").addEventListener("click", addItemInBacklog);
 function addItemInBacklog() {
-    let currentTask = document.createElement("input");
-    let backlog = document.querySelector(".backlog-button");
-    currentTask.type = "text";
-    currentTask.className = "current-backlog-task";
-    currentTask.setAttribute("tabindex", "2");
-    backlog.before(currentTask);
-    document.querySelector(".current-backlog-task").addEventListener("change", addTaskInStorage);
+    if (!isButtonClicked === true) {
+        const currentTask = document.createElement("input");
+        const backlog = document.querySelector(".backlog-button");
+        currentTask.type = "text";
+        currentTask.className = "current-backlog-task";
+        currentTask.setAttribute("tabindex", "2");
+        backlog.before(currentTask);
+        document.querySelector(".current-backlog-task").addEventListener("change", addTaskInStorage);
+        isButtonClicked = true;
+    }
 };
 function addTaskInStorage() {
-    let input = document.querySelector(".current-backlog-task");
-    let backlog = document.querySelector(".backlog-button");
-    let currentObject = JSON.parse(localStorage.getItem("backlog"));
+    const input = document.querySelector(".current-backlog-task");
+    const backlog = document.querySelector(".backlog-button");
+    const currentObject = JSON.parse(localStorage.getItem("backlog"));
     if (input.value !== "") {
-        let task = document.createElement('div');
+        const task = document.createElement('div');
         currentObject.issue.push({ id: "task" + currentObject.issue.length, name: input.value });
         localStorage.setItem("backlog", JSON.stringify(currentObject));
         task.className = "task-item";
@@ -102,15 +108,19 @@ function addTaskInStorage() {
         input.remove();
         initialization()
     }
+    isButtonClicked = false;
 }
 
 
 document.querySelector(".ready-button").addEventListener("click", () => {
+    console.log("do  " + isButtonClicked);
     createDropDown("backlog", "current-ready-task", ".ready-button", "4", changeReady);
+    console.log("posle  " + isButtonClicked);
 });
 function changeReady() {
     addTaskFromDropdown(".ready-button", ".current-ready-task", "backlog", "ready", ".body-backlog");
     initialization();
+    isButtonClicked = false;
 }
 document.querySelector(".progress-button").addEventListener("click", () => {
     createDropDown("ready", "current-progress-task", ".progress-button", "6", changeProgress);
@@ -118,6 +128,7 @@ document.querySelector(".progress-button").addEventListener("click", () => {
 function changeProgress() {
     addTaskFromDropdown(".progress-button", ".current-progress-task", "ready", "progress", ".body-ready");
     initialization();
+    isButtonClicked = false;
 }
 document.querySelector(".finished-button").addEventListener("click", () => {
     createDropDown("progress", "current-finished-task", ".finished-button", "8", changeFinished);
@@ -125,6 +136,7 @@ document.querySelector(".finished-button").addEventListener("click", () => {
 function changeFinished() {
     addTaskFromDropdown(".finished-button", ".current-finished-task", "progress", "finished", ".body-progress");
     initialization();
+    isButtonClicked = false;
 }
 window.addEventListener("load", initialization)
 function initialization() {
@@ -146,6 +158,7 @@ function initialization() {
     }
 }
 function deleteItem(className, index) {
-    let element = document.querySelector(className);
+    console.log(isButtonClicked);
+    const element = document.querySelector(className);
     element.removeChild(document.querySelectorAll(".task-item")[index]);
 }
