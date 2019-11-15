@@ -20,9 +20,3 @@ function createSubMenu() {
     }
 
 }
-function closeMenu() {
-    let arrow = document.querySelector(".arrow");
-    arrow.className = "arrow";
-    let ul = document.querySelector(".user-submenu");
-    ul.parentNode.removeChild(ul);
-}

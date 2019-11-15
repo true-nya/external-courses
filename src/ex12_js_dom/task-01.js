@@ -1,8 +1,4 @@
-let pictures = ["./asset/slide-1.jpg",
-    "./asset/slide-2.jpg",
-    "./asset/slide-3.jpg",
-    "./asset/slide-4.jpg",
-    "./asset/slide-5.jpg"];
+let pictures = ["./asset/slide-1.jpg", "./asset/slide-2.jpg", "./asset/slide-3.jpg", "./asset/slide-4.jpg", "./asset/slide-5.jpg"];
 
 let content = document.getElementById("slider");
 for (let i = 0; i < pictures.length; i++) {
@@ -22,8 +18,8 @@ let slides = document.getElementsByClassName("slide");
 let activeNode = 0;
 slides[0].lastElementChild.id = "activeSlide"
 
-showSlides(0);
-function goNext() {
+function goNext(currentNode) {
+    let activeNode = currentNode;
     if (activeNode === slides.length - 1) {
         activeNode = 0;
         slides[activeNode].lastElementChild.id = "activeSlide";
@@ -34,26 +30,21 @@ function goNext() {
         slides[activeNode - 1].lastElementChild.id = "";
         slides[activeNode].lastElementChild.id = "activeSlide";
     }
-    console.log("kekex" + activeNode)
-    showSlides(activeNode);
+    return activeNode;
 }
-function goBack() {
+function goBack(currentNode) {
+    let activeNode = currentNode;
     if (activeNode === 0) {
-        console.log("loh")
         activeNode = slides.length - 1;
-
         slides[activeNode].lastElementChild.id = "activeSlide";
         slides[0].lastElementChild.id = "";
     }
     else {
-        console.log("pidor " + activeNode)
         activeNode -= 1;
-        console.log("pidor " + activeNode)
         slides[activeNode + 1].lastElementChild.id = "";
         slides[activeNode].lastElementChild.id = "activeSlide";
     }
-    console.log("kekex" + activeNode)
-    showSlides(activeNode);
+    return activeNode;
 }
 function showSlides(activeSlide) {
     for (i = 0; i < slides.length; i++) {
@@ -62,17 +53,17 @@ function showSlides(activeSlide) {
     slides[activeSlide].style.display = "block";
 }
 
-let nextButton = document.getElementById("next");
-nextButton.addEventListener("click", goNext);
-let backButton = document.getElementById("back");
-backButton.addEventListener("click", goBack);
-document.addEventListener("keydown", checkKey)
-function checkKey() {
-    let code = code || window.event;
-    if (code.keyCode === '37') {
-        goBack();
-    }
-    else if (code.keyCode === '39') {
-        goNext();
-    }
+function hundleNext() {
+    activeNode = goNext(activeNode);
+    showSlides(activeNode);
 }
+function hundleBack() {
+    activeNode = goBack(activeNode);
+    showSlides(activeNode);
+}
+
+showSlides(0);
+let nextButton = document.getElementById("next");
+nextButton.addEventListener("click", hundleNext);
+let backButton = document.getElementById("back");
+backButton.addEventListener("click", hundleBack);

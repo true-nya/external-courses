@@ -8,6 +8,11 @@ button {
     cursor: pointer;
 }
 
+img {
+    height: 100%;
+    width: 100%;
+}
+
 button:first-child {
     border-radius: 0 15% 15% 0;
 }
@@ -31,11 +36,6 @@ button:hover, button:focus {
     animation: fade 1.5s ease-in-out;
     overflow: hidden;
     position: absolute;
-}
-
-img {
-    height: 100%;
-    width: 100%;
 }
 
 .slider-container {
