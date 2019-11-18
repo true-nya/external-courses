@@ -1,0 +1,19 @@
+tr td:nth-child(4)::before {
+    content: "\0024";
+}
+
+tr td:nth-child(4)::after {
+    content: ".00";
+}
+
+.codeMinnesota::before {
+    content: "(322) ";
+}
+
+.codeOhio::before {
+    content: "(740) ";
+}
+
+.codeAllCountry::before {
+    content: "(800) ";
+}
