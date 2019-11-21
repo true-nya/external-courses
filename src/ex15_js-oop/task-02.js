@@ -14,7 +14,6 @@ function Room(nameRoom) {
     this.nameRoom = nameRoom;
     this.devices = Array.from(arguments).slice(1);
 }
-
 Room.prototype.searchDeviceByName = function (name) {
     for (let i = 0; i < this.devices.length; i++) {
         if (this.devices[i].name.toLowerCase() === name.toLowerCase()) {
