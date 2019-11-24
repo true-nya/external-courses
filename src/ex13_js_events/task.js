@@ -1,31 +1,19 @@
-const userClick = document.querySelector(".user-menu");
-userClick.addEventListener('click', createSubMenu);
+const userMenu = document.querySelector(".user-menu");
 function createSubMenu() {
-    console.log(!document.querySelector(".user-submenu"));
-    if (!document.querySelector(".user-submenu")) {
-        const arrow = document.querySelector(".arrow");
-        const ul = document.createElement("ul");
-        arrow.className += " reflected-arrow";
-        ul.className = "user-submenu";
-        userClick.append(ul);
-        for (i = 0; i < 3; i++) {
-            ul.append(document.createElement('li'))
-        }
-        const subItems = ul.children;
-        subItems[0].innerHTML = "<a href = '#'>My account</a>";
-        subItems[1].innerHTML = "<a href = '#'>My task</a>";
-        subItems[2].innerHTML = "<a href = '#'>Log out</a>";
+    let userSubmenu = document.querySelector(".user-submenu");
+    const arrow = document.querySelector(".arrow");
+    if (!userSubmenu) {
+        userSubmenu = document.createElement("ul");
+        arrow.classList.add("reflected-arrow");
+        userSubmenu.classList.add("user-submenu");
+        userMenu.append(userSubmenu);
+        userSubmenu.insertAdjacentHTML("beforeend", "<li><a href = '#'>My account</a></li><li><a href = '#'>My task</a></li> <li><a href = '#'>Log out</a></li>");
     } else {
-        closeMenu();
+        arrow.classList.remove("reflected-arrow");
+        userSubmenu.remove();
     }
 }
-function closeMenu() {
-    const arrow = document.querySelector(".arrow");
-    arrow.className = "arrow";
-    const ul = document.querySelector(".user-submenu");
-    ul.parentNode.removeChild(ul);
-}
-
+userMenu.addEventListener("click", createSubMenu)
 localStorage.setItem("backlog", JSON.stringify({
     title: "backlog",
     issue: []
@@ -59,8 +47,9 @@ function addTaskFromDropdown(currentButtonClass, selectName, previos, current, b
     task.className = "task-item";
     task.innerHTML = bufferTask.name;
     currentButton.before(task);
-    currentDropdown.remove();
     deleteItem(bodyPrevios, index);
+    currentDropdown.remove();
+
 }
 function createDropDown(localStorageProperty, className, buttonName, tabIndex, handler) {
     initialization()
@@ -76,7 +65,13 @@ function createDropDown(localStorageProperty, className, buttonName, tabIndex, h
             for (i = 0; i < currentObject.issue.length; i++) {
                 currentDropdown.append(new Option(currentObject.issue[i].name, currentObject.issue[i].id))
             };
-            document.querySelector("." + className).addEventListener("change", handler)
+            document.querySelector("." + className).addEventListener("change", handler);
+            document.querySelector("." + className).addEventListener("blur", () => {
+                if (!currentDropdown.selectedIndex) {
+                    currentDropdown.remove();
+                    isButtonClicked = false;
+                }
+            });
         }
         isButtonClicked = true;
     }
@@ -90,7 +85,7 @@ function addItemInBacklog() {
         currentTask.className = "current-backlog-task";
         currentTask.setAttribute("tabindex", "2");
         backlog.before(currentTask);
-        document.querySelector(".current-backlog-task").addEventListener("change", addTaskInStorage);
+        document.querySelector(".current-backlog-task").addEventListener("blur", addTaskInStorage);
         isButtonClicked = true;
     }
 };
@@ -105,9 +100,9 @@ function addTaskInStorage() {
         task.className = "task-item";
         task.innerHTML = input.value;
         backlog.before(task);
-        input.remove();
-        initialization()
     }
+    input.remove();
+    initialization();
     isButtonClicked = false;
 }
 
@@ -156,7 +151,6 @@ function initialization() {
     }
 }
 function deleteItem(className, index) {
-    console.log(isButtonClicked);
     const element = document.querySelector(className);
     element.removeChild(document.querySelectorAll(".task-item")[index]);
 }

@@ -21,6 +21,17 @@ header, footer {
     background: #0067A3;
 }
 
+header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header, footer, main {
+    min-width: 700px;
+}
+
 main {
     background: #0079BF;
     min-width: 500px;
@@ -28,6 +39,7 @@ main {
     height: 100%;
     overflow-x: scroll;
     display: flex;
+    min-width: 700px;
 }
 
 main::-webkit-scrollbar-track {
@@ -87,11 +99,9 @@ main::-webkit-scrollbar-thumb {
 .app-logo {
     display: flex;
     justify-content: space-between;
-    position: absolute;
     width: 384px;
     height: 45px;
-    left: 14px;
-    top: 5px;
+    margin-left: 14px;
     align-items: center;
 }
 
@@ -107,10 +117,8 @@ main::-webkit-scrollbar-thumb {
 
 .user-ivent {
     display: flex;
-    align-self: center;
-    position: absolute;
-    right: 6px;
-    top: 8px;
+    margin-right: 6px;
+    align-items: center;
 }
 
 .create-list {
@@ -138,7 +146,7 @@ main::-webkit-scrollbar-thumb {
 .user {
     width: 39px;
     height: 39px;
-    border-radius: 100%;
+    border-radius: 50%;
     background: #FFFFFF;
     position: relative;
     margin-right: 7px;
@@ -167,6 +175,7 @@ footer .info {
     display: flex;
     align-items: center;
     margin-left: 25px;
+    font-size: 18px;
 }
 
 .reflected-arrow {
@@ -176,18 +185,19 @@ footer .info {
 .user-submenu {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 7px;
+    border-radius: 5px;
     position: absolute;
-    top: 120%;
+    top: 50px;
     right: 0px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.486);
     color: black;
 }
 
 .user-submenu li {
     height: 20px;
     width: 80px;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255);
     display: block;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -208,12 +218,16 @@ a:link, a:active, a:visited {
 
 .task-block {
     margin: 20px;
+    max-width: 300px;
+    min-width: 286px;
     width: 286px;
     height: min-content;
     max-height: 95%;
     background: #EBECF0;
     border-radius: 10px;
     display: flex;
+    line-height: 21px;
+    font-size: 18px;
     flex-direction: column;
 }
 
@@ -223,6 +237,7 @@ a:link, a:active, a:visited {
     width: auto;
     background: transparent;
     font-size: 18px;
+    line-height: 21px;
     color: #5E6C84;
     display: flex;
     margin-left: 12px;
@@ -245,25 +260,18 @@ a:link, a:active, a:visited {
     padding-top: 2px;
 }
 
-.task-block .header {
-    margin-top: 12px;
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-bottom: 15px;
-    font-size: 18px;
+.task-block .task-header {
+    margin: 12px 12px 15px 12px;
     line-height: 21px;
     color: #000000;
-    justify-self: flex-start;
     display: flex;
     justify-content: space-between;
 }
 
 .task-item, input, select {
-    width: auto;
+    width: 85%;
     white-space: normal;
     word-wrap: break-word;
-    font-size: 18px;
-    line-height: 21px;
     color: #000000;
     margin: 0 12px 15px 12px;
     background: #FFFFFF;

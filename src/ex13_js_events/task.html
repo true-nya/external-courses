@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Kanban</title>
     <link rel="stylesheet" href="task.css">
 </head>
+
 <body>
     <header>
         <div class="app-logo">
@@ -39,7 +41,7 @@
     </header>
     <main>
         <div class="task-block backlog" title="Task for analise">
-            <div class="header">
+            <div class="task-header">
                 <span>Backlog</span>
                 <span>•••</span>
             </div>
@@ -49,7 +51,7 @@
             </div>
         </div>
         <div class="task-block ready" title="Task to align">
-            <div class="header">
+            <div class="task-header">
                 <span>Ready</span>
                 <span>•••</span>
             </div>
@@ -59,7 +61,7 @@
             </div>
         </div>
         <div class="task-block progress" title="Task in codding">
-            <div class="header">
+            <div class="task-header">
                 <span>In Progress</span>
                 <span>•••</span>
             </div>
@@ -68,13 +70,16 @@
                     card</button>
             </div>
         </div>
-        <div class="task-block finished" title="Finished task">
-            <div class="header">
-                <span>Finished</span>
-                <span>•••</span>
-            </div>
-            <div class="body-finished" tabindex="7">
-                <button class="finished-button"><img src="./img/add_task_icon.png" alt="add task icon">Add card</button>
+        <div class="wrapper">
+            <div class="task-block finished" title="Finished task">
+                <div class="task-header">
+                    <span>Finished</span>
+                    <span>•••</span>
+                </div>
+                <div class="body-finished" tabindex="7">
+                    <button class="finished-button"><img src="./img/add_task_icon.png" alt="add task icon">Add
+                        card</button>
+                </div>
             </div>
         </div>
     </main>
@@ -87,4 +92,5 @@
     </footer>
     <script src="./task.js"></script>
 </body>
+
 </html>
