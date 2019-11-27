@@ -1,10 +1,7 @@
 function fetchSimilarity(url, options = { method: 'GET', headers: null, body: null }) {
     const xhr = new XMLHttpRequest();
-    jsonFunc = function () {
-        return JSON.parse(this)
-    }
-    const promise = new Promise((resolve, reject) => {
-        xhr.open(options.method, url, false);
+    return new Promise((resolve, reject) => {
+        xhr.open(options.method, url);
         if (options.method === 'GET' && options.headers === null && options.body === null) {
             xhr.send();
         }
@@ -18,12 +15,11 @@ function fetchSimilarity(url, options = { method: 'GET', headers: null, body: nu
             }
             xhr.send(options.body);
         }
-        if (xhr.status >= 200 && xhr.status < 300) {
+        if (xhr.status === 200) {
             resolve(xhr.responseText)
         }
         else {
             reject(xhr.status + ': ' + xhr.statusText);
         }
     });
-    return promise
 }

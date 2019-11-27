@@ -2,8 +2,7 @@ function debounce(currentFunc, delay) {
     let debounceValue;
     return function () {
         clearInterval(debounceValue);
-        let args = arguments;
-        debounceValue = setTimeout(() => currentFunc.apply(this, args), delay);
+        debounceValue = setTimeout(() => currentFunc.apply(this, arguments), delay);
     }
 }
 const menu = [
@@ -43,32 +42,31 @@ headTable = ["Наименование", "Описание", "Цена, руб"]
 function addTable(menu) {
     if (document.querySelector(".table")) {
         document.querySelector(".table").remove();
-        console.log("delete");
     }
     let table = document.createElement("table");
-    table.className = "table";
+    table.classList.add("table");
     document.querySelector(".main-information").append(table)
     const caption = document.createElement('caption');
     caption.innerHTML = "Меню";
     table.append(caption);
     const rowHead = document.createElement('tr');
-    for (let i = 0; i < headTable.length; i++) {
+    headTable.forEach((item) => {
         const head = document.createElement('th');
-        head.innerText = headTable[i];
+        head.innerText = item;
         rowHead.append(head);
-    }
+    });
     table.append(rowHead)
-    for (let i = 0; i < menu.length; i++) {
+    menu.forEach(item => {
         const row = document.createElement('tr');
         table.append(row);
-        for (const key in menu[i]) {
-            if (menu[i].hasOwnProperty(key)) {
-                const td = document.createElement('td');
-                td.innerText = menu[i][key];
-                row.append(td);
+        for (const key in item) {
+            if (Object.keys(item).includes(key)) {
+                const data = document.createElement('td');
+                data.innerText = item[key];
+                row.append(data);
             }
         }
-    }
+    });
 }
 addTable(menu);
 const input = document.querySelector(".input");
