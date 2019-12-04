@@ -1,0 +1,16 @@
+footer {
+    height: 55px;
+    width: 100%;
+    background: #0067A3;
+    min-width: 700px;
+    line-height: 21px;
+    font-size: 18px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .info {
+    margin-right: 25px;
+}
