@@ -1,0 +1,20 @@
+@import url('./src/fonts/Roboto-Regular.ttf');
+@import url('./src/components/header/header-style.css');
+@import url('./src/components/main/main-style.css');
+@import url('./src/components/task-block/task-style.css');
+@import url('./src/components/footer/footer-style.css');
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+    height: 100%;
+}
